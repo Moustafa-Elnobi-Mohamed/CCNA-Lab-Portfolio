@@ -778,30 +778,6 @@ This lab simulates common enterprise and home network scenarios:
 
 
 
-\## 🚀 Lab Challenges (Optional)
-
-
-
-To extend your learning, try these modifications:
-
-
-
-1\. \*\*Add more inside hosts\*\* - Configure PC-C with 192.168.1.3, test PAT
-
-2\. \*\*Create NAT pool\*\* - Use multiple public IPs (209.165.200.227-229) for dynamic NAT
-
-3\. \*\*Port forwarding\*\* - Map external port 8080 to internal web server port 80
-
-4\. \*\*NAT timeout\*\* - Adjust translation timeout values
-
-5\. \*\*Logging\*\* - Enable NAT logging to syslog server
-
-
-
----
-
-
-
 \## 📚 Additional Resources
 
 
@@ -888,8 +864,6 @@ To extend your learning, try these modifications:
 
 💼 LinkedIn: https://linkedin.com/in/moustafa-elnobi-mohamed-852ab725a
 
-🐙 GitHub: \[View More Labs](https://github.com/YourUsername/Packet-Tracer-Labs)
-
 
 
 ---
@@ -897,4 +871,5 @@ To extend your learning, try these modifications:
 
 
 \*\*⭐ This lab demonstrates practical understanding of NAT configuration and troubleshooting - a critical skill for network engineering roles.\*\*
+
 
