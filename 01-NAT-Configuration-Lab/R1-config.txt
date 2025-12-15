@@ -1,0 +1,22 @@
+enable
+config terminal 
+hostname R1
+no ip domain-lookup 
+enable secret class
+line console 0
+password cisco
+login
+line vty 0 4
+password cisco
+login
+service password-encryption
+banner motd $ Authorized Users Only! $
+interface g0/0/0
+ip address 209.165.200.230 255.255.255.248
+no shutdown
+interface g0/0/1
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+ip route 0.0.0.0 0.0.0.0 209.165.200.225
+exit
+copy running-config startup-config
