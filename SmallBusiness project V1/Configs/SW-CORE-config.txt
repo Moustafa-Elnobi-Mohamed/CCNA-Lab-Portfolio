@@ -1,0 +1,218 @@
+SW-CORE#show running-config
+Building configuration...
+
+Current configuration : 3922 bytes
+!
+version 16.3.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname SW-CORE
+!
+!
+enable secret 5 $1$mERr$9cTjUIEqNGurQiFU.ZeCi1
+!
+!
+!
+!
+!
+!
+no ip cef
+ip routing
+!
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet1/0/1
+ description Trunk to RT-EDGE
+ switchport trunk native vlan 99
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/2
+ description Trunk to AP-GUEST
+ switchport trunk allowed vlan 50
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/3
+ description Trunk to SW-IT
+ switchport trunk native vlan 99
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/4
+ description Trunk to SW-EMP
+ switchport trunk native vlan 99
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/5
+ description IT-Server
+ switchport access vlan 30
+interface GigabitEthernet1/0/5
+ description IT-Server
+ switchport access vlan 30
+ switchport mode access
+!
+interface GigabitEthernet1/0/6
+ description Employee-Server
+ switchport access vlan 30
+ switchport mode access
+!
+interface GigabitEthernet1/0/7
+ description DHCP-Server
+ switchport access vlan 30
+ switchport mode access
+!
+interface GigabitEthernet1/0/8
+ description DNS-Server
+ switchport access vlan 30
+ switchport mode access
+!
+interface GigabitEthernet1/0/9
+ description Email-Server
+ switchport access vlan 30
+ switchport mode access
+!
+interface GigabitEthernet1/0/10
+ description Backup-Server
+ switchport access vlan 30
+ switchport mode access
+!
+interface GigabitEthernet1/0/11
+ description Web-Server-DMZ
+ switchport access vlan 60
+ switchport mode access
+!
+interface GigabitEthernet1/0/12
+!
+interface GigabitEthernet1/0/13
+!
+interface GigabitEthernet1/0/14
+!
+interface GigabitEthernet1/0/15
+!
+interface GigabitEthernet1/0/16
+!
+interface GigabitEthernet1/0/17
+!
+interface GigabitEthernet1/0/18
+interface GigabitEthernet1/0/18
+!
+interface GigabitEthernet1/0/19
+!
+interface GigabitEthernet1/0/20
+!
+interface GigabitEthernet1/0/21
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+!
+interface GigabitEthernet1/1/1
+!
+interface GigabitEthernet1/1/2
+!
+interface GigabitEthernet1/1/3
+!
+interface GigabitEthernet1/1/4
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ description IT Department Gateway
+ mac-address 0002.17c1.ca01
+ ip address 192.168.10.1 255.255.255.0
+ ip helper-address 192.168.30.20
+!
+interface Vlan20
+ description Employee Gateway
+ mac-address 0002.17c1.ca02
+ ip address 192.168.20.1 255.255.255.0
+ ip helper-address 192.168.30.20
+ ip access-group 100 in
+!
+interface Vlan30
+ description Server Gateway
+ mac-address 0002.17c1.ca03
+ ip address 192.168.30.1 255.255.255.0
+!
+interface Vlan40
+ description Printer Gateway
+ mac-address 0002.17c1.ca04
+ ip address 192.168.40.1 255.255.255.0
+!
+interface Vlan50
+ description Guest WiFi Gateway
+ mac-address 0002.17c1.ca05
+ ip address 192.168.50.1 255.255.255.0
+ ip helper-address 192.168.30.20
+ ip access-group 120 in
+!
+interface Vlan60
+ description DMZ Gateway
+mac-address 0002.17c1.ca06
+ ip address 192.168.60.1 255.255.255.0
+!
+interface Vlan99
+ description Management Gateway
+ mac-address 0002.17c1.ca07
+ ip address 192.168.99.1 255.255.255.0
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 10.0.0.1 
+!
+ip flow-export version 9
+!
+!
+access-list 100 deny ip 192.168.20.0 0.0.0.255 host 192.168.30.10
+access-list 100 permit ip any any
+access-list 110 deny ip 192.168.20.0 0.0.0.255 192.168.40.10 0.0.0.1
+access-list 110 permit ip any any
+access-list 120 deny ip 192.168.50.0 0.0.0.255 192.168.10.0 0.0.0.255
+access-list 120 deny ip 192.168.50.0 0.0.0.255 192.168.20.0 0.0.0.255
+access-list 120 deny ip 192.168.50.0 0.0.0.255 192.168.30.0 0.0.0.255
+access-list 120 deny ip 192.168.50.0 0.0.0.255 192.168.40.0 0.0.0.255
+access-list 120 permit ip any any
+!
+banner motd ^C Unauthorized Access Prohibited! ^C
+!
+!
+!
+!
+line con 0
+ password 7 0822455D0A16
+ login
+!
+line aux 0
+!
+line vty 0 4
+ password 7 0822455D0A16
+ login
+!
+!
+!
+!
+end
